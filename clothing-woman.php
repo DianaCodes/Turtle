@@ -15,14 +15,15 @@
         <div class="top">
             <a class="logo" href="turtle.php">TURTLE</a>
 
-            <div class="search clothing-page-search">
-                SEARCH: <input type="text" name="search">
+            <div class="search">
+                <input type="text" name="search" class="searchBox" placeholder="Search...">
 
-                <button type="button" value="Submit">GO</button>
+                <button type="button" value="Submit" class="searchButton">GO</button>
             </div>
             
-            <a href="cart_page.php"><div class="cart-div">
-                <div class="cart-image-div"><input type="image" class="cart" src="https://static.zara.net/stdstatic/1.88.1-b.2/images/icon-32-shopping-bag.svg" alt="Image of shopping cart provided by ZARA.com"></div>
+            <a href="cart_page.php"><div class="cart-div description-page-cart-icon">
+                <!--<div>Icons made by <a href="https://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" 			    title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 			    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>!-->
+                <div class="cart-image"><input type="image" class="cart" src="Graphics/shopping-bag.png" alt="Image of shopping cart."></div>
                 
                 <div class="cart-value cart-number-top-right" value="0">0</div>
             </div></a>
@@ -42,7 +43,7 @@
                     <ul><a class="man">MAN</a></ul>
                     <div class="category-divs">
                         <ul id="category-div3">
-                            <ul><a href="clothing-man.php">CLOTHING</a></ul>
+                            <ul><a>CLOTHING</a></ul>
                         </ul>
                     </div>
                 </ul>
@@ -55,13 +56,13 @@
             <div class="picture-div">
                 <div>
                     <a href="woman-1-description-page.php">
-                        <img src="outerwear-1.jpeg" alt="Woman wearing coat. Source is https://www2.hm.com/en_us/productpage.0650122001.php.">
+                        <img src="Graphics/yellowDress1.jpg" alt="Woman wearing coat. Source is https://www2.hm.com/en_us/productpage.0650122001.php.">
                     </a>
                     
                     <div class="clothing-description-pic-bottom">
                         <div>
                             <a href="woman-1-description-page.php">
-                                <div class="clothing-name">Parka</div>
+                                <div class="clothing-name">Floral High Low Dress</div>
                             </a>
                         </div>
                             
@@ -77,37 +78,7 @@
                             </div>
 
                             <div class="plus-icon add">
-                                <img src="plus-icon.png">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div>
-                    <a href="woman-2-description-page.php">
-                        <img src="outerwear-2.jpeg" alt="Woman wearing coat. Source is https://www2.hm.com/en_us/productpage.0626587010.php.">
-                    </a>
-                        
-                    <div class="clothing-description-pic-bottom">
-                        <div>
-                            <a href="woman-2-description-page.php">
-                                <div class="clothing-name">Double-breasted Jacket</div>
-                            </a>
-                        </div>
-                            
-                        <div class="clothing-description-bottom-row">
-                            <a href="woman-2-description-page.php">   
-                                <div class="clothing-page-price">$39.99</div>
-                            </a>
-
-                            <div class="clothing-size clothing-page-sizes-div">
-                                <div class="size-icon1 clothing-page-sizes">S</div>
-                                <div class="size-icon2 clothing-page-sizes">M</div>
-                                <div class="size-icon3 clothing-page-sizes">L</div>
-                            </div>
-
-                            <div class="plus-icon add">
-                                <img src="plus-icon.png">
+                                <img src="Graphics/plus-icon.png">
                             </div>
                         </div>
                     </div>
@@ -118,14 +89,14 @@
 
     <div class="footer">
         <div class="socialmedia">
-            <img src="facebook.png" class="social-pic" alt="Facebook icon">
+            <img src="Graphics/facebook.png" class="social-pic" alt="Facebook icon">
 
-            <img src="instagram.png" class="social-pic" alt="Instagram icon, details about source below">
+            <img src="Graphics/instagram.png" class="social-pic" alt="Instagram icon, details about source below">
             <!--
             <div>Icons made by <a href="https://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" 			    title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 			    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
             -->
 
-            <img src="twitter.png" class="social-pic" alt="Twitter icon">
+            <img src="Graphics/twitter.png" class="social-pic" alt="Twitter icon">
         </div>
 
         <small class="copy">&copy; TURTLE by Diana Arita</small>

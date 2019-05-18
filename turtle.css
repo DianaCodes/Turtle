@@ -59,6 +59,7 @@ body {
 
 .search {
     margin-left: 40vh;
+    color: black;
 }
 
 .search input {
@@ -70,31 +71,26 @@ body {
     color: black;
 }
 
-
 /* Cart Icon on top right corner */
 .cart-div {
     display: inline-block;
-    position: fixed;
-    margin-left: 95%;
-    margin-top: -50px;
-}
-
-.cart-image-div, 
-.cart-number-top-right {
-}
-
-.cart {
-    width: 50px;
-    height: 80px;
 }
 
 .cart-number-top-right {
     font: "Linotype Didot";
     font-size: 20px;
     color: black !important;
+    z-index: 3 !important;
     position: fixed;
-    margin-top: -50px;
-    margin-left: 20px;
+    margin-left: 95%;
+    top: -55px;
+}
+
+.cart-image{
+    z-index: 2;
+    margin-left: 94%;
+    position: fixed;
+    top: -30px;
 }
 
 /* Clothing Categories on Left Side of page */
@@ -107,6 +103,7 @@ body {
 
 .categories * {
     text-decoration: none;
+    text-align: left;
     color: white;
     margin-top: 20px;
     font-family: sans-serif,serif;
@@ -180,10 +177,6 @@ td {
 .table-head th{
     font-size: 14px;
     padding-bottom: 10px;
-}
-
-tbody {
-    display: none;
 }
 
 .order-item td {
@@ -265,6 +258,8 @@ td div {
 
 .clothing-page-search {
     color: black;
+    position: relative;
+    margin-left: 500px;
 }
 
 .clothing-page-body {
@@ -362,6 +357,8 @@ td div {
 .hamburger{
     width: 50px;
     height: 30px;
+    position: relative;
+    margin-left: 20px;
     -webkit-transform: rotate(0deg);
     -moz-transform: rotate(0deg);
     -o-transform: rotate(0deg);
@@ -371,6 +368,7 @@ td div {
     -o-transition: .5s ease-in-out;
     transition: .5s ease-in-out;
     cursor: pointer;
+    z-index: 4;
 }
 
 .hamburger span {
@@ -450,6 +448,8 @@ td div {
 
 .logo-clothing-page a {
     text-decoration: none;
+    position: absolute;
+    margin-left: 50px;
 }
 
 .description-page-cart-icon * {
@@ -548,4 +548,134 @@ td div {
 
 .add:hover {
     cursor: pointer;
+}
+
+/* Sidebar */
+.w3-sidebar {
+    position: fixed;
+    height: 100%;
+    width: 350px;
+    margin-left: 75%;
+    background-color: rgb(255, 255, 255);
+    z-index: 1;
+}
+
+.w3-border-left {
+    border-left: 1px solid rgb(204, 204, 204) !important;
+}
+
+.w3-bar-block .w3-bar-item {
+    width: 100%;
+    text-align: left;
+    white-space: normal;
+    float: none;
+    padding: 8px 16px;
+    border-width: initial;
+    border-style: none;
+    border-color: initial;
+    border-image: initial;
+    outline: 0px;
+}
+
+.w3-large {
+    font-size: 18px !important;
+}
+
+.w3-button {
+    display: inline-block;
+    vertical-align: middle;
+    color: inherit;
+    background-color: inherit;
+    text-align: center;
+    cursor: pointer;
+    border-width: initial;
+    border-style: none;
+    border-color: initial;
+    border-image: initial;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.sidebar-title {
+    text-align: center;
+    background-color: black;
+    color: white;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.sidebar-cart-img {
+    width: 125px;
+    height: 175px;
+}
+
+.sidebar-cart-products-div {
+    display: block;
+}
+
+.sidebar-cart-products-div-info * {
+    padding-bottom: 10px;
+    display: inline-block;
+    font-style: verdana;
+    font-size: 16px;
+}
+
+.items-shopping-cart *{
+    display: inline;
+}
+
+.cart-size * {
+    display: inline-block;
+}
+
+.delete, .deleteS {
+    cursor: pointer;
+}
+
+
+.delete {
+    background-color: gray;
+    border: 1px solid black;
+    font-size: 12px;
+    text-align: center;
+}
+
+.delete:active {
+    border-right: 1px solid white;
+    border-bottom: 1px solid white;
+}
+
+/* Editor page */
+.editor-header {
+    text-align: center;
+    padding-top: 50px;
+}
+
+.editor-submit {
+    width: 90px;
+    height: 70px;
+    position: relative;
+    float: right;
+    margin-right: 50px;
+    font-size: 20px;
+    background-color: green;
+}
+
+#form1 input {
+    display: block;
+    margin-bottom: 10px;
+    z-index: 3;
+}
+
+ul {
+    list-style-type: none !important;
+    text-align: center;
+    font-size: 20px;
+}
+
+.editor-list {
+}
+
+li {
+    display: inline !important;
 }

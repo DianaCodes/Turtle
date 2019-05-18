@@ -12,9 +12,9 @@
 <body>
     <div class="container">
         <div class="slideshow">
-            <img src="p1.jpeg" alt="Girl in forest.">
-            <img src="p2.jpeg" alt="Three women's backs with their arms around each other.">
-            <img src="p3.jpeg" alt="Man and woman holding hands.">
+            <img src="Graphics/p1.jpg" alt="Girl in forest.">
+            <img src="Graphics/p2.jpg" alt="Three women's backs with their arms around each other.">
+            <img src="Graphics/p3.jpg" alt="Man and woman holding hands.">
         </div>
         
         <div class="slide-desc-div">
@@ -27,13 +27,14 @@
             <a class="logo" href="turtle.php">TURTLE</a>
 
             <div class="search">
-                SEARCH: <input type="text" name="search">
+                <input type="text" name="search" class="searchBox" placeholder="Search...">
 
-                <button type="button" value="Submit">GO</button>
+                <button type="button" value="Submit" class="searchButton">GO</button>
             </div>
             
-            <a href="cart_page.php"><div class="cart-div">
-                <div class="cart-image-div"><img type="image" class="cart" src="https://static.zara.net/stdstatic/1.88.1-b.2/images/icon-32-shopping-bag.svg" alt="Image of shopping cart provided by ZARA.com"></div>
+            <a href="cart_page.php"><div class="cart-div description-page-cart-icon">
+                <!--<div>Icons made by <a href="https://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" 			    title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 			    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>!-->
+                <div class="cart-image"><input type="image" class="cart" src="Graphics/shopping-bag.png" alt="Image of shopping cart."></div>
                 
                 <div class="cart-value cart-number-top-right" value="0">0</div>
             </div></a>
@@ -52,7 +53,7 @@
                     <ul><a class="man">MAN</a></ul>
                     <div class="category-divs">
                         <ul id="category-div3">
-                            <ul><a href="clothing-man.php">CLOTHING</a></ul>
+                            <ul><a>CLOTHING</a></ul>
                         </ul>
                     </div>
                 </ul>
@@ -61,14 +62,14 @@
 
         <div class="footer">
             <div class="socialmedia">
-                <img src="facebook.png" class="social-pic" alt="Facebook icon">
+                <img src="Graphics/facebook.png" class="social-pic" alt="Facebook icon">
                 
-                <img src="instagram.png" class="social-pic" alt="Instagram icon, details about source below">
+                <img src="Graphics/instagram.png" class="social-pic" alt="Instagram icon, details about source below">
                 <!--
                 <div>Icons made by <a href="https://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" 			    title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 			    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
                 -->
                 
-                <img src="twitter.png" class="social-pic" alt="Twitter icon">
+                <img src="Graphics/twitter.png" class="social-pic" alt="Twitter icon">
             </div>
             
             <small class="copy">&copy; TURTLE by Diana Arita</small>
