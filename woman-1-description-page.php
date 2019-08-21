@@ -67,6 +67,24 @@ include 'dbConfig.php';
                         <span class="bar3"></span>
                     </div>
 
+                    <div class="hidden-menu">
+                        <ul>
+                            <ul><a class="woman">WOMAN</a></ul>
+                            <div class="category-divs">
+                                <ul id="category-div2">
+                                    <ul><a href="clothing-woman.php">CLOTHING</a></ul>
+                                </ul>
+                            </div>
+
+                            <ul><a class="man">MAN</a></ul>
+                            <div class="category-divs">
+                                <ul id="category-div3">
+                                    <ul><a>CLOTHING</a></ul>
+                                </ul>
+                            </div>
+                        </ul>
+                    </div>
+
                     <div class="logo-clothing-page">
                         <a href="turtle.php">TURTLE</a>
                     </div>

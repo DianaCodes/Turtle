@@ -227,7 +227,7 @@ $(document).ready(function () {
             if (localStorage.getItem('size') == 'S') {
               markup = "<tr class=\"small-row\"><td colspan=\"2\"><hr class=\"cart-hr>\">" +
               "</td></tr><tr class=\"sidebar-content-div\">" +
-              "<td><img class=\"sidebar-cart-img\" src=\"Graphics/" + product + "\"></td>" +
+              "<td><img class=\"sidebar-cart-img\" src=\"" + product + "\"></td>" +
               "<td class=\"sidebar-cart-products-div-info\">" + 
               "<div>" + descrip + "</div>" +
               "<div>COLOR: " + color + "</div>" +
@@ -256,7 +256,7 @@ $(document).ready(function () {
             } else if (localStorage.getItem('size') == 'M') {
               markup = "<tr><td colspan=\"2\"><hr class=\"cart-hr>\">" +
               "</td></tr><tr class=\"sidebar-content-div\">" +
-              "<td><img class=\"sidebar-cart-img\" src=\"Graphics/" + product + "\"></td>" +
+              "<td><img class=\"sidebar-cart-img\" src=\"" + product + "\"></td>" +
               "<td class=\"sidebar-cart-products-div-info\">" + 
               "<div>" + descrip + "</div>" +
               "<div>COLOR: " + color + "</div>" +
@@ -285,7 +285,7 @@ $(document).ready(function () {
             } else if (localStorage.getItem('size') == 'L') {
               markup = "<tr><td colspan=\"2\"><hr class=\"cart-hr>\">" +
               "</td></tr><tr class=\"sidebar-content-div\">" +
-              "<td><img class=\"sidebar-cart-img\" src=\"Graphics/" + product + "\"></td>" +
+              "<td><img class=\"sidebar-cart-img\" src=\"" + product + "\"></td>" +
               "<td class=\"sidebar-cart-products-div-info\">" + 
               "<div>" + descrip + "</div>" +
               "<div>COLOR: " + color + "</div>" +

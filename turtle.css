@@ -475,13 +475,16 @@ td div {
     font-size: 20px;
     text-shadow: 5px 5px 10px black;
     padding-bottom: 5px;
+    display: block;
 }
 
 .hidden-menu {
     display: none;
     position: fixed;
-    margin-top: 70px;
+    margin-top: 30px;
     margin-left: -60px;
+    background-color: darkgreen;
+
 }
 
 .clothing-description-image-div {
