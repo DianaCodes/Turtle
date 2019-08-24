@@ -112,41 +112,60 @@ $(document).ready(function () {
     //array to store size for clothing item, this will help prevent duplicate sizes in the cart
     var addedSizes = [];
     
-    $('#deleteS').click(function () {
-        localStorage.setItem('.delete','clicked');
+    $('.sidebar-cart-products-div').on('click','.delete', (function () {
+        $(this).closest('tr').remove();
+    }));
 
-        // var x = parseInt($('.cart-value').text()) - 1;
+    $('.sidebar-cart-products-div').on('click','.deleteS',(function () {
+      //remove row from local storage
+      localStorage.removeItem('.new-row-s');
+
+      //subtract quantity from cart value and set
+      var x = parseInt($('.cart-value').text()) - 1;
         
-        // localStorage.setItem('.cart-value',x);
-        // $('.cart-value').text(x);
+      localStorage.setItem('.cart-value',x);
+      $('.cart-value').text(x);
 
-        //if(localStorage.getItem('.item-count-s')>1)
-        localStorage.removeItem('.new-row-s');
+      //set quantity to 0
+      var quantity = localStorage.getItem('.item-count-s');
 
-        //$('.small-row').hide();
+      var val = localStorage.getItem('.item-count-s') - quantity;
+      localStorage.setItem('.item-count-s',val);
+    }));
 
-        localStorage.setItem('tr_removed','true');
+    $('.sidebar-cart-products-div').on('click','.deleteM',(function () {
+      //remove row from local storage
+      localStorage.removeItem('.new-row-m');
 
-        var sizeCheck = 's';
-        var index = $.inArray(sizeCheck,addedSizes);
+      //subtract quantity from cart value and set
+      var x = parseInt($('.cart-value').text()) - 1;
+        
+      localStorage.setItem('.cart-value',x);
+      $('.cart-value').text(x);
 
-        //delete the index from the addedSizes array
-        addedSizes.splice(index,1);
-    });
+      //set quantity to 0
+      var quantity = localStorage.getItem('.item-count-m');
 
-    var trRemoved = localStorage.getItem('tr_removed');
+      var val = localStorage.getItem('.item-count-m') - quantity;
+      localStorage.setItem('.item-count-m',val);
+    }));
 
-    if(trRemoved){
-      $(this).closest('tr').hide();
-    } else {
-      $(this).closest('tr').show();
-    }
+    $('.sidebar-cart-products-div').on('click','.deleteL',(function () {
+      //remove row from local storage
+      localStorage.removeItem('.new-row-l');
 
-    $(function() {
-      if(localStorage.getItem('.delete')=='clicked') {
-        $('.cart-value').text(localStorage.getItem('.cart-value'));
-      }
-    });
+      //subtract quantity from cart value and set
+      var x = parseInt($('.cart-value').text()) - 1;
+        
+      localStorage.setItem('.cart-value',x);
+      $('.cart-value').text(x);
+
+      //set quantity to 0
+      var quantity = localStorage.getItem('.item-count-l');
+
+      var val = localStorage.getItem('.item-count-l') - quantity;
+      localStorage.setItem('.item-count-l',val);
+    }));
     
     //when remove button is clicked on the shopping cart page, then decrement the quantity by 1
     $('.remove').click(function () { 
@@ -183,13 +202,13 @@ $(document).ready(function () {
         localStorage.setItem('.clothing-size','clicked');
     });
             
-  //moves the cart number when add is clicked
-  function doBounce(element, times, distance, speed) {
-    for(var i = 0; i < times; i++) {
-        element.animate({marginTop: '-='+distance}, speed)
-        .animate({marginTop: '+='+distance}, speed);
+    //moves the cart number when add is clicked
+    function doBounce(element, times, distance, speed) {
+      for(var i = 0; i < times; i++) {
+          element.animate({marginTop: '-='+distance}, speed)
+          .animate({marginTop: '+='+distance}, speed);
+      }
     }
-  }
                   
     $('.add').click(function() {
         if(localStorage.getItem('.clothing-size')=='clicked'){
@@ -199,10 +218,13 @@ $(document).ready(function () {
 
             localStorage.setItem('.delete','not-clicked');
             
-            var x = parseInt($('.cart-value').text()) + 1;
-        
-            localStorage.setItem('.cart-value',x);
-            $('.cart-value').text(x);
+            //adding 1 to cart
+            if(parseInt($('.cart-value').text()) < 3){
+              var x = parseInt($('.cart-value').text()) + 1;
+          
+              localStorage.setItem('.cart-value',x);
+              $('.cart-value').text(x);
+            }
                   
             //localStorage.setItem('.quantity-num',count);
             
@@ -225,46 +247,64 @@ $(document).ready(function () {
             var amount = $('.amount').text();
 
             if (localStorage.getItem('size') == 'S') {
-              markup = "<tr class=\"small-row\"><td colspan=\"2\"><hr class=\"cart-hr>\">" +
-              "</td></tr><tr class=\"sidebar-content-div\">" +
+              if(localStorage.getItem('.item-count-s') == null){
+                localStorage.setItem('.item-count-s','0');
+              }
+
+              //Setting local storage values for the 3 sizes
+              var itemCounter = parseInt(localStorage.getItem('.item-count-s')) + 1;
+            
+              localStorage.setItem('.item-count-s',itemCounter);
+              
+              var quantity = localStorage.getItem('.item-count-s');
+
+              markup = "<tr><td colspan=\"2\"><hr class=\"cart-hr>\">" +
+              "</td></tr><tr class=\"sidebar-content-div small-row\">" +
               "<td><img class=\"sidebar-cart-img\" src=\"" + product + "\"></td>" +
               "<td class=\"sidebar-cart-products-div-info\">" + 
               "<div>" + descrip + "</div>" +
               "<div>COLOR: " + color + "</div>" +
               "<div>SIZE: " + siz + "</div><br>" +
               "<div class=\"items-shopping-cart\">ITEMS: <div class=\"increment\">\<</div>"+
-              "<div class=\"item-count-s\">0</div>"+"<div class=\"decrement\">\></div></div>" +
+              "<div class=\"item-count-s\" value=\"0\">" + quantity + 
+              "</div>"+"<div class=\"decrement\">\></div></div>" +
               "<div>PRICE: " + amount + "</div>" +
-              "<button id=\"deleteS\" class=\"delete\">DELETE</button></td></tr>";
+              "<button class=\"delete deleteS\">DELETE</button></td></tr>";
 
               localStorage.setItem('.new-row-s',markup);
 
               var sizeCheck = 's';
               var index = $.inArray(sizeCheck,addedSizes);
 
-              //if there's already a size medium in the cart then don't add another row
+              //if there's already a size small in the cart then don't add another row
               if(index < 0) {
                 $('.sidebar-cart-products-div tr:last').after(localStorage.getItem('.new-row-s'));
                 addedSizes.push(sizeCheck);
               }
 
-              //Setting local storage values for the 3 sizes
-              var itemCounter = parseInt($('.item-count-s').text()) + 1;
-          
-              localStorage.setItem('.item-count-s',itemCounter);
-              $('.item-count-s').text(itemCounter);
             } else if (localStorage.getItem('size') == 'M') {
+              if(localStorage.getItem('.item-count-m') == null){
+                localStorage.setItem('.item-count-m','0');
+              }
+
+              //Setting local storage values for the 3 sizes
+              var itemCounter = parseInt(localStorage.getItem('.item-count-m')) + 1;
+            
+              localStorage.setItem('.item-count-m',itemCounter);
+              
+              var quantity = localStorage.getItem('.item-count-m');
+
               markup = "<tr><td colspan=\"2\"><hr class=\"cart-hr>\">" +
-              "</td></tr><tr class=\"sidebar-content-div\">" +
+              "</td></tr><tr class=\"sidebar-content-div medium-row\">" +
               "<td><img class=\"sidebar-cart-img\" src=\"" + product + "\"></td>" +
               "<td class=\"sidebar-cart-products-div-info\">" + 
               "<div>" + descrip + "</div>" +
               "<div>COLOR: " + color + "</div>" +
               "<div>SIZE: " + siz + "</div><br>" +
               "<div class=\"items-shopping-cart\">ITEMS: <div class=\"increment\">\<</div>"+
-              "<div class=\"item-count-m\">0</div>"+"<div class=\"decrement\">\></div></div>" +
+              "<div class=\"item-count-m\" value=\"0\">" + quantity + "</div>"+"<div class=\"decrement\">\></div></div>" +
               "<div>PRICE: " + amount + "</div>" +
-              "<button class=\"delete\">DELETE</button></td></tr>";
+              "<button class=\"delete deleteM\">DELETE</button></td></tr>";
 
               localStorage.setItem('.new-row-m',markup);
 
@@ -277,23 +317,29 @@ $(document).ready(function () {
                 addedSizes.push(sizeCheck);
               }
 
-              //Setting local storage values for the 3 sizes
-              var itemCounter = parseInt($('.item-count-m').text()) + 1;
-          
-              localStorage.setItem('.item-count-m',itemCounter);
-              $('.item-count-m').text(itemCounter);
             } else if (localStorage.getItem('size') == 'L') {
+              if(localStorage.getItem('.item-count-l') == null){
+                localStorage.setItem('.item-count-l','0');
+              }
+
+              //Setting local storage values for the 3 sizes
+              var itemCounter = parseInt(localStorage.getItem('.item-count-l')) + 1;
+            
+              localStorage.setItem('.item-count-l',itemCounter);
+              
+              var quantity = localStorage.getItem('.item-count-l');
+
               markup = "<tr><td colspan=\"2\"><hr class=\"cart-hr>\">" +
-              "</td></tr><tr class=\"sidebar-content-div\">" +
+              "</td></tr><tr class=\"sidebar-content-div large-row\">" +
               "<td><img class=\"sidebar-cart-img\" src=\"" + product + "\"></td>" +
               "<td class=\"sidebar-cart-products-div-info\">" + 
               "<div>" + descrip + "</div>" +
               "<div>COLOR: " + color + "</div>" +
               "<div>SIZE: " + siz + "</div><br>" +
               "<div class=\"items-shopping-cart\">ITEMS: <div class=\"increment\">\<</div>"+
-              "<div class=\"item-count-l\">0</div>"+"<div class=\"decrement\">\></div></div>" +
+              "<div class=\"item-count-l\"> value=\"0\"" + quantity + "</div>"+"<div class=\"decrement\">\></div></div>" +
               "<div>PRICE: " + amount + "</div>" +
-              "<button class=\"delete\">DELETE</button></td></tr>";
+              "<button class=\"delete deleteL\">DELETE</button></td></tr>";
 
               localStorage.setItem('.new-row-l',markup);
 
@@ -305,12 +351,6 @@ $(document).ready(function () {
                 $('.sidebar-cart-products-div tr:last').after(localStorage.getItem('.new-row-l'));
                 addedSizes.push(sizeCheck);
               }
-
-              //Setting local storage values for the 3 sizes
-              var itemCounter = parseInt($('.item-count-l').text()) + 1;
-          
-              localStorage.setItem('.item-count-l',itemCounter);
-              $('.item-count-l').text(itemCounter);
             }
         } else {
            alert('Pick a size please.');
@@ -322,6 +362,10 @@ $(document).ready(function () {
       if(localStorage.getItem('.add')=='clicked') {
         $('.cart-value').text(localStorage.getItem('.cart-value'));
 
+        $('.item-count-s').text(localStorage.getItem('.item-count-s'));
+        $('.item-count-m').text(localStorage.getItem('.item-count-m'));
+        $('.item-count-l').text(localStorage.getItem('.item-count-l'));
+
         //add row to table if size is small and there is not already a small in the cart
         var sizeCheck = 's';
         var index = $.inArray(sizeCheck,addedSizes);
@@ -332,6 +376,7 @@ $(document).ready(function () {
           addedSizes.push(sizeCheck);
         }
 
+        //set text for small quantity in cart
         $('.item-count-s').text(localStorage.getItem('.item-count-s'));
         
         //add row to table if size is medium and there is not already a medium in the cart
@@ -344,6 +389,7 @@ $(document).ready(function () {
           addedSizes.push(sizeCheck);
         }
 
+        //set text for medium quantity in cart
         $('.item-count-m').text(localStorage.getItem('.item-count-m'));
       
         //add row to table if size is large and there is not already a large in the cart
@@ -355,6 +401,8 @@ $(document).ready(function () {
           $('.sidebar-cart-products-div tr:last').after(localStorage.getItem('.new-row-l'));
           addedSizes.push(sizeCheck);
         }
+
+        //set text for large quantity in cart
         $('.item-count-l').text(localStorage.getItem('.item-count-l'));
       }
     });
@@ -371,7 +419,7 @@ $(document).ready(function () {
     
         reader.onload = function(e) {
           $('#image-description-js1').attr('src', e.target.result);
-        }
+        };
     
         reader.readAsDataURL(input.files[0]);
       }
@@ -387,7 +435,7 @@ $(document).ready(function () {
     
         reader.onload = function(e) {
           $('#image-description-js2').attr('src', e.target.result);
-        }
+        };
     
         reader.readAsDataURL(input.files[0]);
       }
