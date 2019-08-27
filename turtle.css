@@ -631,12 +631,9 @@ td div {
     display: inline-block;
 }
 
-.delete, .deleteS {
-    cursor: pointer;
-}
-
 
 .delete {
+    cursor: pointer;
     background-color: gray;
     border: 1px solid black;
     font-size: 12px;
@@ -646,6 +643,11 @@ td div {
 .delete:active {
     border-right: 1px solid white;
     border-bottom: 1px solid white;
+}
+
+.increment,
+.decrement {
+    cursor: pointer;
 }
 
 /* Editor page */
