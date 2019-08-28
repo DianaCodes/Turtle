@@ -50,7 +50,7 @@ include 'dbConfig.php';
         </table>
 
         <div class="">
-            <div>Total:</div>
+            <div>Total: $<span class="cart-total">0</span></div>
         </div>
 
         <button type="submit" class="">CHECKOUT</button>

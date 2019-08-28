@@ -120,13 +120,18 @@ $(document).ready(function () {
       //remove row from local storage
       localStorage.removeItem('.new-row-s');
 
-      quantityS = 0;
-
       //subtract quantity from cart value and set
       var x = parseInt($('.cart-value').text()) - 1;
         
       localStorage.setItem('.cart-value',x);
       $('.cart-value').text(x);
+
+      //Subtract amount from cart total
+      var amountS = localStorage.getItem('.item-count-s') * parseFloat($('.amount').text()).toFixed(2);
+      var cartTotal = parseFloat($('.cart-total').text()).toFixed(2) - amountS;
+                    
+      localStorage.setItem('cart-total',cartTotal);
+      $('.cart-total').text(cartTotal);
 
       //set quantity to 0
       var quantity = localStorage.getItem('.item-count-s');
@@ -145,6 +150,13 @@ $(document).ready(function () {
       localStorage.setItem('.cart-value',x);
       $('.cart-value').text(x);
 
+      //Subtract amount from cart total
+      var amountM = localStorage.getItem('.item-count-m') * parseFloat($('.amount').text()).toFixed(2);
+      var cartTotal = parseFloat($('.cart-total').text()).toFixed(2) - amountM;
+                    
+      localStorage.setItem('cart-total',cartTotal);
+      $('.cart-total').text(cartTotal);
+
       //set quantity to 0
       var quantity = localStorage.getItem('.item-count-m');
 
@@ -162,6 +174,13 @@ $(document).ready(function () {
       localStorage.setItem('.cart-value',x);
       $('.cart-value').text(x);
 
+      //Subtract amount from cart total
+      var amountL = localStorage.getItem('.item-count-l') * parseFloat($('.amount').text()).toFixed(2);
+      var cartTotal = parseFloat($('.cart-total').text()).toFixed(2) - amountL;
+                    
+      localStorage.setItem('cart-total',cartTotal);
+      $('.cart-total').text(cartTotal);
+
       //set quantity to 0
       var quantity = localStorage.getItem('.item-count-l');
 
@@ -175,6 +194,12 @@ $(document).ready(function () {
           
       localStorage.setItem('.item-count-s',x);
       $('.item-count-s').text(x);
+
+      //Add to cart total
+      var cartTotal = parseFloat($('.cart-total').text()) + parseFloat($('.amount').text());
+                    
+      localStorage.setItem('cart-total',cartTotal.toFixed(2));
+      $('.cart-total').text(cartTotal.toFixed(2));
     }));
 
     $('.sidebar-cart-products-div').on('click','.incrementM',(function () {
@@ -182,6 +207,12 @@ $(document).ready(function () {
           
       localStorage.setItem('.item-count-m',x);
       $('.item-count-m').text(x);
+
+      //Add to cart total
+      var cartTotal = parseFloat($('.cart-total').text()) + parseFloat($('.amount').text());
+                    
+      localStorage.setItem('cart-total',cartTotal.toFixed(2));
+      $('.cart-total').text(cartTotal.toFixed(2));
     }));
 
     $('.sidebar-cart-products-div').on('click','.incrementL',(function () {
@@ -189,6 +220,12 @@ $(document).ready(function () {
           
       localStorage.setItem('.item-count-l',x);
       $('.item-count-l').text(x);
+
+      //Add to cart total
+      var cartTotal = parseFloat($('.cart-total').text()) + parseFloat($('.amount').text());
+                    
+      localStorage.setItem('cart-total',cartTotal.toFixed(2));
+      $('.cart-total').text(cartTotal.toFixed(2));
     }));
     
     //Decrement cart value by 1
@@ -198,10 +235,23 @@ $(document).ready(function () {
             
         localStorage.setItem('.item-count-s',x);
         $('.item-count-s').text(x);
+
+        //Delete amount from cart total
+        var cartTotal = parseFloat($('.cart-total').text()) - parseFloat($('.amount').text());
+                      
+        localStorage.setItem('cart-total',cartTotal.toFixed(2));
+        $('.cart-total').text(cartTotal.toFixed(2));
       } else {
         //remove row from table since quantity is 0
         $(this).closest('tr').remove();
 
+        //Subtract amount from cart total
+        var amountS = localStorage.getItem('.item-count-s') * parseFloat($('.amount').text()).toFixed(2);
+        var cartTotal = parseFloat($('.cart-total').text()).toFixed(2) - amountS;
+                      
+        localStorage.setItem('cart-total',cartTotal);
+        $('.cart-total').text(cartTotal);
+        
         //remove row from local storage
         localStorage.removeItem('.new-row-s');
 
@@ -227,9 +277,22 @@ $(document).ready(function () {
             
         localStorage.setItem('.item-count-m',x);
         $('.item-count-m').text(x);
+
+        //Delete amount from cart total
+        var cartTotal = parseFloat($('.cart-total').text()) - parseFloat($('.amount').text());
+                      
+        localStorage.setItem('cart-total',cartTotal.toFixed(2));
+        $('.cart-total').text(cartTotal.toFixed(2));
       } else {
         //remove row from table since quantity is 0
         $(this).closest('tr').remove();
+
+        //Subtract amount from cart total
+        var amountM = localStorage.getItem('.item-count-m') * parseFloat($('.amount').text()).toFixed(2);
+        var cartTotal = parseFloat($('.cart-total').text()).toFixed(2) - amountM;
+                      
+        localStorage.setItem('cart-total',cartTotal);
+        $('.cart-total').text(cartTotal);
 
         //remove row from local storage
         localStorage.removeItem('.new-row-m');
@@ -256,9 +319,22 @@ $(document).ready(function () {
             
         localStorage.setItem('.item-count-l',x);
         $('.item-count-l').text(x);
+
+        //Delete amount from cart total
+        var cartTotal = parseFloat($('.cart-total').text()) - parseFloat($('.amount').text());
+                      
+        localStorage.setItem('cart-total',cartTotal.toFixed(2));
+        $('.cart-total').text(cartTotal.toFixed(2));
       } else {
         //remove row from table since quantity is 0
         $(this).closest('tr').remove();
+
+        //Subtract amount from cart total
+        var amountL = localStorage.getItem('.item-count-l') * parseFloat($('.amount').text()).toFixed(2);
+        var cartTotal = parseFloat($('.cart-total').text()).toFixed(2) - amountL;
+                      
+        localStorage.setItem('cart-total',cartTotal);
+        $('.cart-total').text(cartTotal);
 
         //remove row from local storage
         localStorage.removeItem('.new-row-l');
@@ -299,20 +375,10 @@ $(document).ready(function () {
             localStorage.setItem('.add','clicked');
 
             localStorage.setItem('.delete','not-clicked');
-                  
-            //localStorage.setItem('.quantity-num',count);
-            
+
             $('.size-icon1').removeClass('size-icon-active');
             $('.size-icon2').removeClass('size-icon-active');
             $('.size-icon3').removeClass('size-icon-active');
-
-            //price = localStorage.getItem('.cart-value').text() * $('.outwear1-price').text();
-    
-            //$('.outwear1-price').text(price.toFixed(2));
-    
-            //total += price;
-      
-            //$('.total-shopping-cart-page').text(total.toFixed(2));
         
             var product = $('img.images').attr('src'); //Get image src
             var descrip = $('.description').text().toUpperCase();
@@ -350,7 +416,7 @@ $(document).ready(function () {
               "<div class=\"items-shopping-cart\">ITEMS: <div class=\"decrement decrementS\">\<</div>"+
               "<div class=\"item-count-s\" value=\"0\">" + quantity + 
               "</div>"+"<div class=\"increment incrementS\">\></div></div>" +
-              "<div>PRICE: " + amount + "</div>" +
+              "<div class=\"priceS\">PRICE: $" + amount + "</div>" +
               "<button class=\"delete deleteS\">DELETE</button></td></tr>";
 
               localStorage.setItem('.new-row-s',markup);
@@ -363,6 +429,12 @@ $(document).ready(function () {
                 $('.sidebar-cart-products-div tr:last').after(localStorage.getItem('.new-row-s'));
                 addedSizes.push(sizeCheck);
               }
+
+              //Cart Total
+              var cartTotal = parseFloat($('.cart-total').text()) + parseFloat($('.amount').text());
+                    
+              localStorage.setItem('cart-total',cartTotal);
+              $('.cart-total').text(cartTotal);
 
             } else if (localStorage.getItem('size') == 'M') {
               if(localStorage.getItem('.new-row-m') == null) {
@@ -393,7 +465,7 @@ $(document).ready(function () {
               "<div>SIZE: " + siz + "</div><br>" +
               "<div class=\"items-shopping-cart\">ITEMS: <div class=\"decrement decrementM\">\<</div>"+
               "<div class=\"item-count-m\" value=\"0\">" + quantity + "</div>"+"<div class=\"increment incrementM\">\></div></div>" +
-              "<div>PRICE: " + amount + "</div>" +
+              "<div class=\"priceM\">PRICE: $" + amount + "</div>" +
               "<button class=\"delete deleteM\">DELETE</button></td></tr>";
 
               localStorage.setItem('.new-row-m',markup);
@@ -406,6 +478,12 @@ $(document).ready(function () {
                 $('.sidebar-cart-products-div tr:last').after(localStorage.getItem('.new-row-m'));
                 addedSizes.push(sizeCheck);
               }
+
+              //Cart Total
+              var cartTotal = parseFloat($('.cart-total').text()) + parseFloat($('.amount').text());
+                    
+              localStorage.setItem('cart-total',cartTotal);
+              $('.cart-total').text(cartTotal);
 
             } else if (localStorage.getItem('size') == 'L') {
               if(localStorage.getItem('.new-row-l') == null) {
@@ -436,7 +514,7 @@ $(document).ready(function () {
               "<div>SIZE: " + siz + "</div><br>" +
               "<div class=\"items-shopping-cart\">ITEMS: <div class=\"decrement decrementL\">\<</div>"+
               "<div class=\"item-count-l\"> value=\"0\"" + quantity + "</div>"+"<div class=\"increment incrementL\">\></div></div>" +
-              "<div>PRICE: " + amount + "</div>" +
+              "<div class=\"priceL\">PRICE: $" + amount + "</div>" +
               "<button class=\"delete deleteL\">DELETE</button></td></tr>";
 
               localStorage.setItem('.new-row-l',markup);
@@ -450,6 +528,13 @@ $(document).ready(function () {
                 $('.sidebar-cart-products-div tr:last').after(localStorage.getItem('.new-row-l'));
                 addedSizes.push(sizeCheck);
               }
+
+              //Cart Total
+              var cartTotal = parseFloat($('.cart-total').text()) + parseFloat($('.amount').text());
+                    
+              localStorage.setItem('cart-total',cartTotal);
+              $('.cart-total').text(cartTotal);
+
             }
         } else {
            alert('Pick a size please.');
@@ -556,4 +641,9 @@ $(document).ready(function () {
         alert("Item not found.");
       }
     });
+
+    //Cart Total
+    if(localStorage.getItem('cart-total') != null){
+      $('.cart-total').text(localStorage.getItem('cart-total'));
+    }
 });
