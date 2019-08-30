@@ -526,6 +526,11 @@ td div {
     padding-right: 40px;
 }
 
+.clothing-woman-name1 {
+    text-align: left;
+    padding-bottom: 3px;
+}
+
 .size-guide {
     font-size: 12px;
     margin-left: 75%;
@@ -676,9 +681,6 @@ ul {
     list-style-type: none !important;
     text-align: center;
     font-size: 20px;
-}
-
-.editor-list {
 }
 
 li {

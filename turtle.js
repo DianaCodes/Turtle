@@ -127,16 +127,22 @@ $(document).ready(function () {
       $('.cart-value').text(x);
 
       //Subtract amount from cart total
-      var amountS = localStorage.getItem('.item-count-s') * parseFloat($('.amount').text()).toFixed(2);
-      var cartTotal = parseFloat($('.cart-total').text()).toFixed(2) - amountS;
+      var amountS = localStorage.getItem('.item-count-s') * localStorage.getItem('amount');
+      var cartTotal = localStorage.getItem('cart-total') - amountS;
                     
-      localStorage.setItem('cart-total',cartTotal);
-      $('.cart-total').text(cartTotal);
+      if(cartTotal >1){
+        localStorage.setItem('cart-total',cartTotal);
+        $('.cart-total').text(cartTotal);
+      }else {
+        localStorage.setItem('cart-total',0);
+        $('.cart-total').text(0);
+      }
 
       //set quantity to 0
       var quantity = localStorage.getItem('.item-count-s');
 
       var val = localStorage.getItem('.item-count-s') - quantity;
+      
       localStorage.setItem('.item-count-s',val);
     }));
 
@@ -151,11 +157,16 @@ $(document).ready(function () {
       $('.cart-value').text(x);
 
       //Subtract amount from cart total
-      var amountM = localStorage.getItem('.item-count-m') * parseFloat($('.amount').text()).toFixed(2);
-      var cartTotal = parseFloat($('.cart-total').text()).toFixed(2) - amountM;
+      var amountM = localStorage.getItem('.item-count-m') * localStorage.getItem('amount');
+      var cartTotal = localStorage.getItem('cart-total') - amountM;
                     
-      localStorage.setItem('cart-total',cartTotal);
-      $('.cart-total').text(cartTotal);
+      if(cartTotal >1){
+        localStorage.setItem('cart-total',cartTotal);
+        $('.cart-total').text(cartTotal);
+      }else {
+        localStorage.setItem('cart-total',0);
+        $('.cart-total').text(0);
+      }
 
       //set quantity to 0
       var quantity = localStorage.getItem('.item-count-m');
@@ -175,11 +186,16 @@ $(document).ready(function () {
       $('.cart-value').text(x);
 
       //Subtract amount from cart total
-      var amountL = localStorage.getItem('.item-count-l') * parseFloat($('.amount').text()).toFixed(2);
-      var cartTotal = parseFloat($('.cart-total').text()).toFixed(2) - amountL;
+      var amountL = localStorage.getItem('.item-count-l') * localStorage.getItem('amount');
+      var cartTotal = localStorage.getItem('cart-total') - amountL;
                     
-      localStorage.setItem('cart-total',cartTotal);
-      $('.cart-total').text(cartTotal);
+      if(cartTotal >1){
+        localStorage.setItem('cart-total',cartTotal);
+        $('.cart-total').text(cartTotal);
+      }else {
+        localStorage.setItem('cart-total',0);
+        $('.cart-total').text(0);
+      }
 
       //set quantity to 0
       var quantity = localStorage.getItem('.item-count-l');
@@ -196,7 +212,7 @@ $(document).ready(function () {
       $('.item-count-s').text(x);
 
       //Add to cart total
-      var cartTotal = parseFloat($('.cart-total').text()) + parseFloat($('.amount').text());
+      var cartTotal = parseInt(localStorage.getItem('cart-total')) + parseInt(localStorage.getItem('amount'));
                     
       localStorage.setItem('cart-total',cartTotal.toFixed(2));
       $('.cart-total').text(cartTotal.toFixed(2));
@@ -209,7 +225,7 @@ $(document).ready(function () {
       $('.item-count-m').text(x);
 
       //Add to cart total
-      var cartTotal = parseFloat($('.cart-total').text()) + parseFloat($('.amount').text());
+      var cartTotal = parseInt(localStorage.getItem('cart-total')) + parseInt(localStorage.getItem('amount'));
                     
       localStorage.setItem('cart-total',cartTotal.toFixed(2));
       $('.cart-total').text(cartTotal.toFixed(2));
@@ -222,7 +238,7 @@ $(document).ready(function () {
       $('.item-count-l').text(x);
 
       //Add to cart total
-      var cartTotal = parseFloat($('.cart-total').text()) + parseFloat($('.amount').text());
+      var cartTotal = parseInt(localStorage.getItem('cart-total')) + parseInt(localStorage.getItem('amount'));
                     
       localStorage.setItem('cart-total',cartTotal.toFixed(2));
       $('.cart-total').text(cartTotal.toFixed(2));
@@ -237,7 +253,7 @@ $(document).ready(function () {
         $('.item-count-s').text(x);
 
         //Delete amount from cart total
-        var cartTotal = parseFloat($('.cart-total').text()) - parseFloat($('.amount').text());
+        var cartTotal = localStorage.getItem('cart-total') - localStorage.getItem('amount');
                       
         localStorage.setItem('cart-total',cartTotal.toFixed(2));
         $('.cart-total').text(cartTotal.toFixed(2));
@@ -246,16 +262,19 @@ $(document).ready(function () {
         $(this).closest('tr').remove();
 
         //Subtract amount from cart total
-        var amountS = localStorage.getItem('.item-count-s') * parseFloat($('.amount').text()).toFixed(2);
-        var cartTotal = parseFloat($('.cart-total').text()).toFixed(2) - amountS;
-                      
-        localStorage.setItem('cart-total',cartTotal);
-        $('.cart-total').text(cartTotal);
+        var amountS = localStorage.getItem('.item-count-s') * localStorage.getItem('amount');
+        var cartTotal = localStorage.getItem('cart-total') - amountS;
+
+        if(cartTotal >1){
+          localStorage.setItem('cart-total',cartTotal);
+          $('.cart-total').text(cartTotal);
+        }else {
+          localStorage.setItem('cart-total',0);
+          $('.cart-total').text(0);
+        }
         
         //remove row from local storage
         localStorage.removeItem('.new-row-s');
-
-        quantityS = 0;
 
         //subtract quantity from cart value and set
         var x = parseInt($('.cart-value').text()) - 1;
@@ -279,7 +298,7 @@ $(document).ready(function () {
         $('.item-count-m').text(x);
 
         //Delete amount from cart total
-        var cartTotal = parseFloat($('.cart-total').text()) - parseFloat($('.amount').text());
+        var cartTotal = localStorage.getItem('cart-total') - localStorage.getItem('amount');
                       
         localStorage.setItem('cart-total',cartTotal.toFixed(2));
         $('.cart-total').text(cartTotal.toFixed(2));
@@ -288,16 +307,19 @@ $(document).ready(function () {
         $(this).closest('tr').remove();
 
         //Subtract amount from cart total
-        var amountM = localStorage.getItem('.item-count-m') * parseFloat($('.amount').text()).toFixed(2);
-        var cartTotal = parseFloat($('.cart-total').text()).toFixed(2) - amountM;
+        var amountM = localStorage.getItem('.item-count-m') * localStorage.getItem('amount');
+        var cartTotal = localStorage.getItem('cart-total') - amountM;
                       
-        localStorage.setItem('cart-total',cartTotal);
-        $('.cart-total').text(cartTotal);
+        if(cartTotal >1){
+          localStorage.setItem('cart-total',cartTotal);
+          $('.cart-total').text(cartTotal);
+        }else {
+          localStorage.setItem('cart-total',0);
+          $('.cart-total').text(0);
+        }
 
         //remove row from local storage
         localStorage.removeItem('.new-row-m');
-
-        quantityS = 0;
 
         //subtract quantity from cart value and set
         var x = parseInt($('.cart-value').text()) - 1;
@@ -321,7 +343,7 @@ $(document).ready(function () {
         $('.item-count-l').text(x);
 
         //Delete amount from cart total
-        var cartTotal = parseFloat($('.cart-total').text()) - parseFloat($('.amount').text());
+        var cartTotal = localStorage.getItem('cart-total') - localStorage.getItem('amount');
                       
         localStorage.setItem('cart-total',cartTotal.toFixed(2));
         $('.cart-total').text(cartTotal.toFixed(2));
@@ -330,17 +352,20 @@ $(document).ready(function () {
         $(this).closest('tr').remove();
 
         //Subtract amount from cart total
-        var amountL = localStorage.getItem('.item-count-l') * parseFloat($('.amount').text()).toFixed(2);
-        var cartTotal = parseFloat($('.cart-total').text()).toFixed(2) - amountL;
+        var amountL = localStorage.getItem('.item-count-l') * localStorage.getItem('amount');
+        var cartTotal = localStorage.getItem('cart-total') - amountL;
                       
-        localStorage.setItem('cart-total',cartTotal);
-        $('.cart-total').text(cartTotal);
+        if(cartTotal >1){
+          localStorage.setItem('cart-total',cartTotal);
+          $('.cart-total').text(cartTotal);
+        }else {
+          localStorage.setItem('cart-total',0);
+          $('.cart-total').text(0);
+        }
 
         //remove row from local storage
         localStorage.removeItem('.new-row-l');
-
-        quantityS = 0;
-
+        
         //subtract quantity from cart value and set
         var x = parseInt($('.cart-value').text()) - 1;
           
@@ -421,6 +446,8 @@ $(document).ready(function () {
 
               localStorage.setItem('.new-row-s',markup);
 
+              localStorage.setItem('amount',$('.amount').text());
+
               var sizeCheck = 's';
               var index = $.inArray(sizeCheck,addedSizes);
 
@@ -470,6 +497,8 @@ $(document).ready(function () {
 
               localStorage.setItem('.new-row-m',markup);
 
+              localStorage.setItem('amount',$('.amount').text());
+
               var sizeCheck = 'm';
               var index = $.inArray(sizeCheck,addedSizes);
 
@@ -518,6 +547,8 @@ $(document).ready(function () {
               "<button class=\"delete deleteL\">DELETE</button></td></tr>";
 
               localStorage.setItem('.new-row-l',markup);
+
+              localStorage.setItem('amount',$('.amount').text());
 
               var sizeCheck = 'l';
               var index = $.inArray(sizeCheck,addedSizes);

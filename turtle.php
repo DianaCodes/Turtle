@@ -10,6 +10,23 @@
 </head>
     
 <body>
+    <div class="w3-sidebar w3-bar-block w3-border-left w3-large" style="display:none" id="mySidebar">
+        <button class="w3-bar-item w3-large w3-close">Close &times;</button>
+        <div class="sidebar-title">SHOPPING CART</div>
+        <table class="sidebar-cart-products-div">
+            <tr class="sidebar-product-top">
+                <th>PRODUCT</th>
+                <th>DESCRIPTION</th>
+            </tr>
+        </table>
+
+        <div class="">
+            <div>Total: $<span class="cart-total">0</span></div>
+        </div>
+
+        <button type="submit" class="">CHECKOUT</button>
+    </div>
+
     <div class="container">
         <div class="slideshow">
             <img src="Graphics/p1.jpg" alt="Girl in forest.">
@@ -32,12 +49,12 @@
                 <button type="button" value="Submit" class="searchButton">GO</button>
             </div>
             
-            <a href="cart_page.php"><div class="cart-div description-page-cart-icon">
+            <div class="cart-div description-page-cart-icon w3-button">
                 <!--<div>Icons made by <a href="https://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" 			    title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 			    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>!-->
                 <div class="cart-image"><input type="image" class="cart" src="Graphics/shopping-bag.png" alt="Image of shopping cart."></div>
                 
                 <div class="cart-value cart-number-top-right" value="0">0</div>
-            </div></a>
+            </div>
         </div>
 
         <div>
